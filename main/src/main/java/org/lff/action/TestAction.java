@@ -5,6 +5,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
+import org.lff.form.MyBean;
 import org.lff.form.TestForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -33,6 +35,13 @@ public class TestAction extends DispatchAction {
     }
 
     public ActionForward test(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        java.util.List<MyBean> options = new ArrayList<MyBean>();
+        options.add(new MyBean("1", "Option 1"));
+        options.add(new MyBean("2", "Option 2"));
+        options.add(new MyBean("3", "Option 3"));
+        request.setAttribute("options", options);
+
         logger.info("TestAction.test called");
         logger.info("SessionId = {} {}", request.getSession().getId(), request.getSession().isNew());
         request.getSession().invalidate();
@@ -53,7 +62,7 @@ public class TestAction extends DispatchAction {
         long end_tstamp = System.currentTimeMillis();
         System.out.println("servlet execution took ["+(end_tstamp-start_tstamp)+"]ms");
 
-        return mapping.findForward("hello");
+        return mapping.findForward("success");
     }
 
     private void executeAsynchronously(AsyncContext asyncContext, long start_tstamp) {

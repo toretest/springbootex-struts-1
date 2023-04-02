@@ -8,7 +8,7 @@
 
     <!-- ========== Form Bean Definitions ============ -->
     <form-beans>
-        <form-bean name="testForm" type="org.lff.form.TestForm"></form-bean>
+        <form-bean name="testForm" type="org.lff.form.TestForm" />
     </form-beans>
 
 
@@ -19,11 +19,15 @@
 
     <!-- ========== Action Mapping Definitions ======== -->
     <action-mappings>
-        <action path="/test" name="testForm" type="org.lff.action.TestAction"
+        <action path="/test"
+                name="testForm"
+                type="org.lff.action.TestAction"
+                parameter="method"
                 scope="request"
-                parameter="state"
+                input="jsp/hello.jsp"
                 >
             <forward name="hello" path="/WEB-INF/jsp/hello.jsp"/>
+            <forward name="tiles" path="testTiles"/>
             <forward name="tiles" path="testTiles"/>
         </action>
     </action-mappings>

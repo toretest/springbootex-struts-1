@@ -12,17 +12,27 @@
 </head>
 <body>
 
-    Struts Bean value = <bean:write name="testForm" property="value"/> </br>
-    Test &lt;%= ... %&gt; Tag: </br>
-    System currentMillis = <%= System.currentTimeMillis()  %> </br>
+<html:form action="/test">
+    <html:select property="myProperty">
+        <html:optionsCollection name="options" label="label" value="value"/>
+    </html:select>
+    <br>
+    <html:submit property="method" value="test" />
+</html:form>
+<br>
+Verdien er <bean:write name="testForm" property="myProperty" />
+<br>
+Struts Bean value = <bean:write name="testForm" property="value"/> </br>
+Test &lt;%= ... %&gt; Tag: </br>
+System currentMillis = <%= System.currentTimeMillis()  %> </br>
 
-    Test &lt;% ... %&gt; Tag: </br>
-    <%
-        response.getWriter().flush();
-        Map<String, String[]> map = request.getParameterMap();
-        for (String key : map.keySet()) {
-            out.println(key + " - " + Arrays.toString(map.get(key)));
-        }
-    %>
+Test &lt;% ... %&gt; Tag: </br>
+<%
+    response.getWriter().flush();
+    Map<String, String[]> map = request.getParameterMap();
+    for (String key : map.keySet()) {
+        out.println(key + " - " + Arrays.toString(map.get(key)));
+    }
+%>
 </body>
 </html>
