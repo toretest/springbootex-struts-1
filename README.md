@@ -12,7 +12,9 @@ If you like to start the main class instead of the *maven:run* task, you must se
 
 After the embeded Tomcat is started, open your browser and access
 https://localhost:8080/test.do?state=test
-
+https://localhost:8080/welcome.do
 ** HTTPS enabled, so the protocol should be https.
 
 That's all.
+
+java 1.8!!

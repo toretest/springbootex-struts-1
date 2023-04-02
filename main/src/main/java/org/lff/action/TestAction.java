@@ -34,6 +34,11 @@ public class TestAction extends DispatchAction {
         logger.info("TestAction created.");
     }
 
+    public final ActionForward message(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+    System.out.println("sending");
+    return mapping.findForward("success");
+}
+
     public ActionForward test(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         java.util.List<MyBean> options = new ArrayList<MyBean>();
