@@ -24,16 +24,15 @@
                 forward="/WEB-INF//jsp/Welcome.jsp"
                 name="testForm"
                 type="org.lff.action.TestAction"
-                parameter="method"
-
+                parameter="action"
         >
-                 <forward name="sucess" path="/WEB-INF//jsp/Welcome.jsp"/>
+                 <forward name="success" path="/WEB-INF/jsp/Welcome.jsp"/>
          </action>
 
         <action path="/test"
                 name="testForm"
                 type="org.lff.action.TestAction"
-                parameter="method"
+                parameter="action"
                 scope="request"
         >
             <forward name="hello" path="/WEB-INF/jsp/hello.jsp"/>

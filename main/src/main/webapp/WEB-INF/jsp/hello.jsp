@@ -12,13 +12,13 @@
 </head>
 <body>
 
-<html:form action="/test">
+<%--<html:form action="/test">
     <html:select property="myProperty">
         <html:optionsCollection name="options" label="label" value="value"/>
     </html:select>
     <br>
     <html:submit property="method" value="test" />
-</html:form>
+</html:form>--%>
 <br>
 Verdien er <bean:write name="testForm" property="myProperty" />
 <br>

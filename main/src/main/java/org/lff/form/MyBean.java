@@ -16,4 +16,11 @@ public class MyBean {
     public String getLabel() {
         return label;
     }
+
+    /**
+     * Calculate two numbers
+     */
+    public void calc(){
+
+    }
 }

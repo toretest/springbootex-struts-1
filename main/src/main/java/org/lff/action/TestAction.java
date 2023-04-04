@@ -35,9 +35,23 @@ public class TestAction extends DispatchAction {
     }
 
     public final ActionForward message(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
-    System.out.println("sending");
-    return mapping.findForward("success");
-}
+        System.out.println("message");
+        return mapping.findForward("success");
+    }
+
+    public final ActionForward welcome(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+        System.out.println("welcome");
+        return mapping.findForward("success");
+    }
+
+     public final ActionForward welcomesubmit(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+         System.out.println("welcomesubmit");
+        TestForm testForm = (TestForm)form;
+        //testForm.setSelectedCustomer();
+        return mapping.findForward("success");
+    }
+
+
 
     public ActionForward test(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -60,12 +74,12 @@ public class TestAction extends DispatchAction {
         }
 
         long start_tstamp = System.currentTimeMillis();
-        System.out.println("async servlet request received by thread-"+Thread.currentThread().getId());
+        System.out.println("async servlet request received by thread-" + Thread.currentThread().getId());
 
         executeAsynchronously(request.startAsync(), start_tstamp);
 
         long end_tstamp = System.currentTimeMillis();
-        System.out.println("servlet execution took ["+(end_tstamp-start_tstamp)+"]ms");
+        System.out.println("servlet execution took [" + (end_tstamp - start_tstamp) + "]ms");
 
         return mapping.findForward("success");
     }
@@ -76,7 +90,7 @@ public class TestAction extends DispatchAction {
                 Thread.sleep(1000);
                 asyncContext.getResponse().getWriter().write("Async response!");
                 long now = System.currentTimeMillis();
-                System.out.println("async servlet request processed by thread-"+Thread.currentThread().getId()+" in ["+(now-start_tstamp)+"]ms");
+                System.out.println("async servlet request processed by thread-" + Thread.currentThread().getId() + " in [" + (now - start_tstamp) + "]ms");
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
